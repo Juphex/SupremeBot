@@ -2,7 +2,7 @@ from .crawler import Crawler
 
 class Get_Names(Crawler):
     #first position of list is name
-    def get_names_from_items(items):
+    def get_names_from_items(self, items):
         for item in items:
             if item[0] == None:
                 request = self.rq.get(item[1])
