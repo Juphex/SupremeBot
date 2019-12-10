@@ -1,4 +1,4 @@
-from crawler import Crawler
+from .crawler import Crawler
 
 class Get_Items(Crawler):
     def get_items(self):
@@ -7,10 +7,12 @@ class Get_Items(Crawler):
         baseurl = "https://www.supremenewyork.com/"
 
         items = []
+        #save in order: [name, link, image, sold_out status]
         for article in response.css("div.inner-article"):
             link = baseurl + str(article.css("a::attr(href)").get())
-            image = article.css("a > img::attr(src)").get()
+            image = article.css("a > img::attr(src)").get()[2:]
             sold_out = article.css("a > div::text").get()
-            items.append([link, image, sold_out])
+            name = article.css("h1 > a::text").get()
+            items.append([name, link, image, sold_out])
 
         return items

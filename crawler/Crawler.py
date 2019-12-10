@@ -1,7 +1,7 @@
 import requests as rq
 from scrapy.http import TextResponse
 
-class Crawler():
+class Crawler:
     def __init__(self, url):
         self.url = url
         self.rq = rq
