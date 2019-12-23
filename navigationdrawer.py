@@ -8,7 +8,7 @@ from kivy.uix.widget import Widget
 from kivy.core.window import Window
 from kivy.metrics import dp
 
-from kivy.garden.navigationdrawer import NavigationDrawer
+from libs.garden.navigationdrawer import NavigationDrawer
 
 class ExampleApp(App):
 
@@ -80,4 +80,4 @@ class ExampleApp(App):
 
         return navigationdrawer
 
-    ExampleApp().run()
+ExampleApp().run()
