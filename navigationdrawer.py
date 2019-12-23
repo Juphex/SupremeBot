@@ -10,6 +10,8 @@ from kivy.metrics import dp
 
 from libs.garden.navigationdrawer import NavigationDrawer
 
+#https://github.com/kivy-garden/garden.navigationdrawer#
+#https://www.reddit.com/r/kivy/comments/2cniis/hidden_sliding_menu/cji22op/
 class ExampleApp(App):
 
     def build(self):
