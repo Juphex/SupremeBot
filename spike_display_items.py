@@ -22,6 +22,10 @@ class Sizes(Enum):
     LARGE = 2
     XLARGE = 3
 
+#REFRESH BUTTON
+#REFRESH ON DROP
+#BACKGROUND SERVICE?
+
 class Order:
     def buy(link):
         #get info
@@ -78,9 +82,11 @@ class Items(GridLayout):
             item = self.items[i]
             src = "http://" + str(item[2])
             self.add_widget(Item(item[0], item[1], src, item[3], size_hint_y=None))
+    
     def refresh(self):
         self.items = self.crawler.get_items()
         self.display_items()
+    
     def display_items(self):
         print("hi")
 
