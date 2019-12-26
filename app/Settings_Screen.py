@@ -8,4 +8,4 @@ class SettingsScreen(Screen):
         self.btn.bind(on_press = self.switch_screen)
         self.add_widget(self.btn)
     def switch_screen(self, instance):
-        self.manager.current = "menu"
+        self.manager.current = "view"

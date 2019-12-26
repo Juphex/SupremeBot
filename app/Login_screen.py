@@ -6,16 +6,18 @@ from kivy.uix.textinput import TextInput
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.bubble import Button
 from kivy.uix.popup import Popup
+from kivy.uix.screenmanager import Screen
 
-class Login(GridLayout):
+class LoginScreen(Screen):
     def __init__(self, **kwargs):
-        super(Login, self).__init__(**kwargs)
+        super(LoginScreen, self).__init__(**kwargs)
         self.username = ""
         self.password = ""
 
+        self.layout = GridLayout()
+        self.layout.cols = 1
+        self.layout.rows = 3
 
-        self.cols = 1
-        self.rows = 3
         self.inner_layout = GridLayout(row_force_default=True, row_default_height=60,
                 padding= [100,100,100,100])
 
@@ -42,8 +44,9 @@ class Login(GridLayout):
         self.button_layout.add_widget(self.submit_button)
         self.submit_button.bind(on_press=self.verifyLogin)
 
-        self.add_widget(self.inner_layout)
-        self.add_widget(self.button_layout)
+        self.layout.add_widget(self.inner_layout)
+        self.layout.add_widget(self.button_layout)
+        self.add_widget(self.layout)
 
     def verifyLogin(self, instance):
         self.username = self.username_input.text
@@ -52,7 +55,7 @@ class Login(GridLayout):
         #Verify with Database
         success = True
         if success == True:
-            return Dashboard(self.username)
+            self.manager.current = "view"
         elif success == False:
             #button in popup
             content = Button(text='Try again', padding=(100,100))
@@ -61,6 +64,3 @@ class Login(GridLayout):
 
             content.bind(on_press=popup.dismiss)
             popup.open()
-
-    def get_username(self):
-        return self.username
