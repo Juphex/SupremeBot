@@ -3,7 +3,7 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from View_Screen import ViewScreen
 from Settings_Screen import SettingsScreen
-from Login_screen import LoginScreen
+from Login_Screen import LoginScreen
 
 class SupremeBot(App):
     def build(self):
