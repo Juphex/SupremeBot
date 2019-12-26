@@ -1,4 +1,4 @@
-from dashboard import Dashboard
+from Dashboard import Dashboard
 
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout

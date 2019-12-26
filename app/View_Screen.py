@@ -11,6 +11,7 @@ class ViewScreen(Screen):
         self.navbar = NavigationBar()
         #self.navbar.button_home.bind(on_press=self.show_navbar)
         #self.navbar.button_category.bind()
+        self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))
         self.add_widget(self.navbar)
 
         #action bar
@@ -30,6 +31,5 @@ class ViewScreen(Screen):
     def show_navbar(self, instance):
         self.navbar.toggle_state()
 
-    def switch_screen(self, instance):
-       print("Switch Screen")
-       self.manager.current = "settings"
+    def switch_screen(self, screen):
+       self.manager.current = screen

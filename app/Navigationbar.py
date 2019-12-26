@@ -11,11 +11,13 @@ class NavigationBar(NavigationDrawer):
         super(NavigationBar, self).__init__(**kwargs)
         side_panel = BoxLayout(orientation='vertical')
         #side_panel.add_widget(Label(text='Supreme Bot'))
-        self.button_home = Button(text='A button')
-        self.button_category = Button(text='Another button')
+        self.button_home = Button(text='Start')
+        self.button_category = Button(text='Category 1')
+        self.button_settings = Button(text="Settings")
 
         side_panel.add_widget(self.button_home)
         side_panel.add_widget(self.button_category)
+        side_panel.add_widget(self.button_settings)
         self.add_widget(side_panel)
 
         main_panel = BoxLayout(orientation='vertical')
