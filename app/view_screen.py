@@ -10,7 +10,7 @@ class ViewScreen(Screen):
         #navbar
         self.navbar = NavigationBar()
         #self.navbar.button_home.bind(on_press=self.show_navbar)
-        #self.navbar.button_category.bind()
+        self.navbar.button_category.bind(on_press=self.selenium)
         self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))
         self.add_widget(self.navbar)
 
@@ -33,3 +33,15 @@ class ViewScreen(Screen):
 
     def switch_screen(self, screen):
        self.manager.current = screen
+
+    def selenium(self, instance):
+        from selenium import webdriver
+        driver = webdriver.Chrome("C:/Users/Chris/Documents/SupremeBot/app/chromedriver.exe")
+        driver.get("http://salamut.de")
+        x = driver.find_element_by_css_selector("title").text
+        print(x)
+        self.navbar.button_category.text = "hihihi"
+        print("hi")
+        driver.quit()
+
+        
