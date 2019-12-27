@@ -1,7 +1,7 @@
 from kivy.uix.screenmanager import Screen
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionPrevious, ActionButton, ActionBar, ActionGroup, ActionView, ActionItem
-from Navigationbar import NavigationBar
+from navigationbar import NavigationBar
 
 
 class ViewScreen(Screen):
