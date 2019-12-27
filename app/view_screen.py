@@ -36,7 +36,13 @@ class ViewScreen(Screen):
 
     def selenium(self, instance):
         from selenium import webdriver
-        driver = webdriver.Chrome("C:/Users/Chris/Documents/SupremeBot/app/chromedriver.exe")
+        from selenium.webdriver.chrome.options import Options  
+
+        opts = Options()  
+
+        opts.set_headless = True
+        driver = webdriver.Chrome("C:/Users/Chris/Documents/SupremeBot/app/chromedriver.exe"\
+            , chrome_options=opts)
         driver.get("http://salamut.de")
         x = driver.find_element_by_css_selector("title").text
         print(x)
