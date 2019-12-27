@@ -35,17 +35,14 @@ class ViewScreen(Screen):
        self.manager.current = screen
 
     def selenium(self, instance):
-        from selenium import webdriver
-        from selenium.webdriver.chrome.options import Options  
+        import webbrowser
+        url = 'http://www.python.org/'
 
-        opts = Options()  
+        # Open URL in a new tab, if a browser window is already open.
+        webbrowser.open_new_tab(url + 'doc/')
 
-        opts.set_headless = True
-        driver = webdriver.Chrome("C:/Users/Chris/Documents/SupremeBot/app/chromedriver.exe"\
-            , chrome_options=opts)
-        driver.get("http://salamut.de")
-        x = driver.find_element_by_css_selector("title").text
-        print(x)
+        # Open URL in new window, raising the window if possible.
+        webbrowser.open_new(url)
         self.navbar.button_category.text = "hihihi"
         print("hi")
         driver.quit()
