@@ -2,13 +2,13 @@ from crawler import Crawler
 from item import Item
 
 class Get_Items(Crawler):
-    def __init__(self, base_url, **kwargs):
+    def __init__(self, base_url):
         super(Get_Items, self).__init__()
         self.base_url = base_url
 
     def get_items(self, url):
-        request = self.rq.get(self.url)
-        response = self.TextResponse(self.url, body=request.content)
+        request = self.rq.get(url)
+        response = self.TextResponse(url, body=request.content)
 
         items = []
         #save in order: [name, link, image, sold_out status]
