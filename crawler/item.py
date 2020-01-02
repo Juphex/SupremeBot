@@ -8,6 +8,7 @@ class Item():
         self.sizes = sizes
         self.price = price
         self.category = category
+        #e.g. color
         self.model = model
     
     def sold_out(self):

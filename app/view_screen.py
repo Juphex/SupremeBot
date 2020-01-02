@@ -44,6 +44,7 @@ class ViewScreen(Screen):
     def switch_screen(self, screen):
        self.manager.current = screen
 
+    #random func
     def selenium(self, instance):
         self.navbar.button_category.text = "hihihi"
         print("hi")

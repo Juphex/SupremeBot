@@ -17,7 +17,7 @@ class Get_Info(Crawler):
                 response = self.TextResponse(url, body=request.content)
                 item.name = response.css("div > h1[itemprop='name']::text").get()
                 item.model = response.css("div > p[itemprop='model']::text").get()
-                item.price = response.css("div > p[itemprop='model']::text").get()
+                item.price = response.css("div > p[itemprop='price']::text").get()
                 item.sizes = response.css("select[id='size'] > option").get()
         else:
                 url = items.link
@@ -25,7 +25,7 @@ class Get_Info(Crawler):
                 response = self.TextResponse(url, body=request.content)
                 items.name = response.css("div > h1[itemprop='name']::text").get()
                 items.model = response.css("div > p[itemprop='model']::text").get()
-                items.price = response.css("div > p[itemprop='model']::text").get()
+                items.price = response.css("div > p[itemprop='price']::text").get()
                 items.sizes = response.css("select[id='size'] > option").get()
 
         return items

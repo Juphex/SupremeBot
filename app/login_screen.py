@@ -1,5 +1,3 @@
-from dashboard import Dashboard
-
 from kivy.uix.label import Label
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.textinput import TextInput
