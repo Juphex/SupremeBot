@@ -8,16 +8,9 @@ Context = autoclass("android.content.Context")
 class SettingsScreen(Screen):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        #self.btn = Button(text="SETTINGS //TODO")
-        #self.btn.bind(on_press = self.switch_screen)
-        #self.add_widget(self.btn)
-        WebView = autoclass("android.webkit.WebView")
-        WebViewClient = autoclass('android.webkit.WebViewClient')                                       
-        wv = WebView(Context)
-        wv.getSettings().setJavaScriptEnabled(True)
-        wv.setWebViewClient(WebViewClient())
-        activity.setContentView(wv)
-        wv.loadUrl("http://www.example.com")
+        self.btn = Button(text="SETTINGS //TODO")
+        self.btn.bind(on_press = self.switch_screen)
+        self.add_widget(self.btn)
 
     def switch_screen(self, instance):
         self.manager.current = "view"

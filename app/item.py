@@ -1,0 +1,41 @@
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.gridlayout import GridLayout
+from kivy.uix.dropdown import DropDown
+
+class DisplayItem(BoxLayout):
+    def __init__(self, item, **kwargs):
+        super(Item, self).__init__(**kwargs)
+        self.item = item
+        self.img = AsyncImage(source=self.item.image_src, size_hint=(1,1))
+        #self.img.width = 200
+        #self.img.height = 200
+        self.name = self.item.name
+        self.link = self.item.link
+        self.status = self.item.status
+
+        self.add_widget(self.img)
+        self.buy_btn = Button(text="Buy now", size_hint=(1,0.1))
+        self.buy_btn.bind(on_press=self.buy_item)
+        self.info_layout = GridLayout()
+        self.info_layout.cols = 1
+        self.info_layout.rows = 4
+
+        self.sizes = DropDown()
+        for size in self.item.sizes:
+            btn = Button(text=size, size_hint_y=None)
+            btn.bind(on_release=lambda btn: self.sizes.select(btn.text))
+            self.sizes.add_widget(btn)
+        #set default value to item.sizes
+        self.mainbutton = Button(text=self.item.sizes[0], size_hint=(1, 0.1))
+        self.mainbutton.bind(on_release=self.sizes.open)
+        self.sizes.bind(on_select=lambda instance, x: setattr(self.mainbutton, "text", x))
+
+        self.info_layout.add_widget(Label(text=str(self.status), size_hint=(1,0.1)))
+        self.info_layout.add_widget(self.mainbutton)
+        self.info_layout.add_widget(self.buy_btn)
+        self.add_widget(self.info_layout)
+
+    def buy_item(self, instance):
+        #return Order.buy(self.link)
+        print("Buy Logic to implement")

@@ -2,6 +2,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionPrevious, ActionButton, ActionBar, ActionGroup, ActionView, ActionItem
 from navigationbar import NavigationBar
+from item import DisplayItem
 
 
 class ViewScreen(Screen):
@@ -27,6 +28,15 @@ class ViewScreen(Screen):
         self.actnvw.add_widget(self.actnprv)
         self.actnbr.add_widget(self.actnvw)
         self.add_widget(self.actnbr)
+
+        #items
+        from crawler.item_crawler import Item_Crawler
+        crawler = Item_Crawler()
+        self.items = crawler.items_all
+        for item in self.items:
+            src = "http://" + item.img_src
+            self.add_widget(DisplayItem(item, size_hint_y=None))
+
 
     def show_navbar(self, instance):
         self.navbar.toggle_state()
