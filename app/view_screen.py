@@ -29,14 +29,6 @@ class ViewScreen(Screen):
         self.actnbr.add_widget(self.actnvw)
         self.add_widget(self.actnbr)
 
-        #items
-        from inspect import getsourcefile
-        import os.path as path, sys
-        current_dir = path.dirname(path.abspath(getsourcefile(lambda:0)))
-        sys.path.insert(0, current_dir[:current_dir.rfind(path.sep)])
-        import my_module  # Replace "my_module" here with the module name.
-        sys.path.pop(0)
-
         from crawler.item_crawler import Item_Crawler
         crawler = Item_Crawler()
         self.items = crawler.items_all
