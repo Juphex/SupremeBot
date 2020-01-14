@@ -1,5 +1,5 @@
-from get_items import Get_Items
-from get_info import Get_Info
+from .get_items import Get_Items
+from .get_info import Get_Info
 
 class Item_Crawler():
     def __init__(self, url):

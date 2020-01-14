@@ -1,4 +1,4 @@
-from crawler import Crawler
+from .crawler import Crawler
 
 #adds further infos to given items
 #status=None, sizes=None, price=None
