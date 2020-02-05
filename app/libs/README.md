@@ -26,4 +26,4 @@ public class MyWebViewClient extends WebViewClient {
     }
 }
 ```
-Refereced Library: android.jar (Android\Sdk\platforms\android-27\android.jar)
+Referenced Library: android.jar (Android\Sdk\platforms\android-27\android.jar)
