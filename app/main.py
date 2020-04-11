@@ -6,7 +6,6 @@ from settings_screen import SettingsScreen
 from login_screen import LoginScreen
 
 from crawler.item_crawler import Item_Crawler
-ItemCrawler = Item_Crawler("")
 
 
 class SupremeBot(App):
@@ -14,9 +13,11 @@ class SupremeBot(App):
         return sm
         
 if __name__ == "__main__":
+    item_crawler = Item_Crawler()
+
     sm = ScreenManager()
     sm.add_widget(LoginScreen(name="login"))
-    sm.add_widget(ViewScreen(name='view'))
+    sm.add_widget(ViewScreen(item_crawler, name='view'))
     sm.add_widget(SettingsScreen(name='settings'))
 
     SupremeBot().run()

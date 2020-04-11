@@ -6,7 +6,7 @@ from item import DisplayItem
 
 
 class ViewScreen(Screen):
-    def __init__(self, **kwargs):
+    def __init__(self, item_crawler, **kwargs):
         super(ViewScreen, self).__init__(**kwargs)
         #navbar
         self.navbar = NavigationBar()
@@ -29,11 +29,7 @@ class ViewScreen(Screen):
         self.actnbr.add_widget(self.actnvw)
         self.add_widget(self.actnbr)
 
-        #from crawler.item_crawler import Item_Crawler
-        #crawler = Item_Crawler("https://www.supremenewyork.com/shop/all")
-        crawler = ItemCrawler("https://www.supremenewyork.com/shop/all")
-
-        self.items = crawler.items_all
+        self.items = item_crawler.items_all
         for item in self.items:
             self.add_widget(DisplayItem(item, size_hint_y=None))
 
