@@ -8,7 +8,7 @@ class DisplayItem(BoxLayout):
     def __init__(self, item, **kwargs):
         super(DisplayItem, self).__init__(**kwargs)
         self.item = item
-        self.img = AsyncImage(source=self.item.image_src, size_hint=(1,1))
+        self.img = AsyncImage(source=self.item.img_src, size_hint=(1,1))
         #self.img.width = 200
         #self.img.height = 200
         self.name = self.item.name

@@ -33,7 +33,6 @@ class ViewScreen(Screen):
         crawler = Item_Crawler("https://www.supremenewyork.com/shop/all")
         self.items = crawler.items_all
         for item in self.items:
-            src = "http://" + item.img_src
             self.add_widget(DisplayItem(item, size_hint_y=None))
 
 
