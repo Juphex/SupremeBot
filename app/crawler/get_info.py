@@ -9,7 +9,7 @@ class Get_Info(Crawler):
     #Items can be one item or list
     def get(self, items):
         #determine wether items is list
-        if len(items) > 1:
+        if len(items) >= 1:
             for item in items:
                 #check of sold out
                 url = item.link
