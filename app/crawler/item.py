@@ -13,7 +13,7 @@ class Item():
     
     def sold_out(self):
         #check if working
-        if sold_out == "sold out":
+        if self.status == "sold out":
             return True
 
         return False

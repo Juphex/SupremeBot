@@ -30,7 +30,7 @@ class ViewScreen(Screen):
         self.add_widget(self.actnbr)
 
         from crawler.item_crawler import Item_Crawler
-        crawler = Item_Crawler()
+        crawler = Item_Crawler("https://www.supremenewyork.com/shop/all")
         self.items = crawler.items_all
         for item in self.items:
             src = "http://" + item.img_src

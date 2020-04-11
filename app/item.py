@@ -5,7 +5,7 @@ from kivy.uix.dropdown import DropDown
 
 class DisplayItem(BoxLayout):
     def __init__(self, item, **kwargs):
-        super(Item, self).__init__(**kwargs)
+        super(item, self).__init__(**kwargs)
         self.item = item
         self.img = AsyncImage(source=self.item.image_src, size_hint=(1,1))
         #self.img.width = 200
