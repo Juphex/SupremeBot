@@ -31,7 +31,7 @@ class ViewScreen(Screen):
 
         self.items = item_crawler.items_all
         for item in self.items:
-            self.add_widget(DisplayItem(item, size_hint_y=None))
+            self.add_widget(DisplayItem(item, size_hint_y=None, orientation="horizontal"))
 
 
     def show_navbar(self, instance):
