@@ -3,6 +3,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import AsyncImage
+from kivy.uix.label import Label
 
 class DisplayItem(BoxLayout):
     def __init__(self, item, **kwargs):
