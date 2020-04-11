@@ -23,11 +23,14 @@ class DisplayItem(BoxLayout):
         self.info_layout.cols = 1
         self.info_layout.rows = 4
 
-        self.sizes = DropDown()
-        for size in self.item.sizes:
-            btn = Button(text=size, size_hint_y=None)
-            btn.bind(on_release=lambda btn: self.sizes.select(btn.text))
-            self.sizes.add_widget(btn)
+        #Case item has no options
+        if self.item.sizes is not None:
+            self.sizes = DropDown()
+            for size in self.item.sizes:
+                btn = Button(text=size, size_hint_y=None)
+                btn.bind(on_release=lambda btn: self.sizes.select(btn.text))
+                self.sizes.add_widget(btn)
+
         #set default value to item.sizes
         self.mainbutton = Button(text=self.item.sizes[0], size_hint=(1, 0.1))
         self.mainbutton.bind(on_release=self.sizes.open)
