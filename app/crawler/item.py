@@ -3,7 +3,7 @@ class Item():
         model=None):
         self.name = name
         self.link = link
-        self.img_src = img_src
+        self.img_src = "https://" + img_src
         self.status = status
         self.sizes = sizes
         self.price = price
