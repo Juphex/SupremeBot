@@ -3,7 +3,8 @@ class Item():
         model=None):
         self.name = name
         self.link = link
-        self.img_src = "https://" + img_src
+        #changed to http due to ssl error
+        self.img_src = "http://" + img_src
         self.status = status
         self.sizes = sizes
         self.price = price
