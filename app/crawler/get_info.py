@@ -20,6 +20,8 @@ class Get_Info(Crawler):
                 item.price = response.css("div > p[itemprop='price']::text").get()
                 item.sizes = response.css("select[id='size'] > option").get()
         else:
+                print(len(items))
+                print(items.link)
                 url = items.link
                 request = self.rq.get(url)
                 response = self.TextResponse(url, body=request.content)
