@@ -2,10 +2,11 @@ from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.dropdown import DropDown
+from kivy.uix.image import AsyncImage
 
 class DisplayItem(BoxLayout):
     def __init__(self, item, **kwargs):
-        super(item, self).__init__(**kwargs)
+        super(DisplayItem).__init__(**kwargs)
         self.item = item
         self.img = AsyncImage(source=self.item.image_src, size_hint=(1,1))
         #self.img.width = 200
