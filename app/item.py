@@ -31,13 +31,14 @@ class DisplayItem(BoxLayout):
                 btn.bind(on_release=lambda btn: self.sizes.select(btn.text))
                 self.sizes.add_widget(btn)
 
-        #set default value to item.sizes
-        self.mainbutton = Button(text=self.item.sizes[0], size_hint=(1, 0.1))
-        self.mainbutton.bind(on_release=self.sizes.open)
-        self.sizes.bind(on_select=lambda instance, x: setattr(self.mainbutton, "text", x))
+            #set default value to item.sizes
+            self.mainbutton = Button(text=self.item.sizes[0], size_hint=(1, 0.1))
+            self.mainbutton.bind(on_release=self.sizes.open)
+            self.sizes.bind(on_select=lambda instance, x: setattr(self.mainbutton, "text", x))
+            self.info_layout.add_widget(self.mainbutton)
+
 
         self.info_layout.add_widget(Label(text=str(self.status), size_hint=(1,0.1)))
-        self.info_layout.add_widget(self.mainbutton)
         self.info_layout.add_widget(self.buy_btn)
         self.add_widget(self.info_layout)
 
