@@ -3,16 +3,18 @@ class Item():
         model=None):
         self.name = name
         self.link = link
-        self.img_src = img_src
+        #changed to http due to ssl error
+        self.img_src = "http://" + img_src
         self.status = status
         self.sizes = sizes
         self.price = price
         self.category = category
+        #e.g. color
         self.model = model
     
     def sold_out(self):
         #check if working
-        if sold_out == "sold out":
+        if self.status == "sold out":
             return True
 
         return False
