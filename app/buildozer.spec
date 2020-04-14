@@ -4,10 +4,10 @@
 title = Supreme Bot
 
 # (str) Package name
-package.name = myapp
+package.name = sprmebot
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.test
+package.domain = org.sprmebot
 
 # (str) Source code where the main.py live
 source.dir = .
