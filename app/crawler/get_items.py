@@ -1,10 +1,10 @@
-from .crawler import Crawler
-from .item import Item
+from crawler import Crawler
+from item import Item
 
 class Get_Items(Crawler):
-    def __init__(self, base_url):
+    def __init__(self):
         super(Get_Items, self).__init__()
-        self.base_url = base_url
+        self.base_url = "https://www.supremenewyork.com/"
 
     def get_items(self, url):
         request = self.rq.get(url)
