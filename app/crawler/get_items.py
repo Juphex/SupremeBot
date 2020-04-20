@@ -1,5 +1,5 @@
-from crawler import Crawler
-from item import Item
+from .crawler import Crawler
+from .item import Item
 
 class Get_Items(Crawler):
     def __init__(self):
