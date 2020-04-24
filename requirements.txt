@@ -1,0 +1,5 @@
+kivy
+requests
+scrapy
+android
+pyjnius
