@@ -6,6 +6,8 @@ class DisplayItemsLayout(GridLayout):
     def __init__(self, items, **kwargs):
         super(DisplayItemsLayout, self).__init__(**kwargs)
         self.cols = 2
-        self.spacing = 5
+        #horizontal, vertical
+        self.spacing = [0, 10]
+        self.padding = [0,53,0,0]
         for item in items:
             self.add_widget(DisplayItem(item, size_hint_y=None, orientation="horizontal"))

@@ -17,7 +17,7 @@ class ViewScreen(Screen):
         #self.navbar.button_home.bind(on_press=self.show_navbar)
         self.navbar.button_category.bind(on_press=self.selenium)
         self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))
-        #self.add_widget(self.navbar, 2)
+        self.add_widget(self.navbar, 2)
 
         #action bar
         #add refresh button?
@@ -33,15 +33,16 @@ class ViewScreen(Screen):
         self.actnbr.add_widget(self.actnvw)
         
         
-        #self.add_widget(self.actnbr)
+        self.add_widget(self.actnbr)
 
         self.items = item_crawler.getNew()
+        self.layout = DisplayItemsLayout(self.items, size_hint_y=None)
         self.sv = ScrollView(size_hint=(1, None), size=(Window.width, Window.height))
-        #self.sv.do_scroll_x = False
-        #self.sv.do_scroll_y = True
-        self.layout = DisplayItemsLayout(self.items, size_hint_x = 1, size_hint_y=None)
+        self.layout = DisplayItemsLayout(self.items, size_hint_y=None)
+        self.layout.bind(minimum_height=self.layout.setter('height'))
+
         self.sv.add_widget(self.layout)
-        self.add_widget(self.sv)
+        self.add_widget(self.sv, -1)
 
     def show_navbar(self, instance):
         self.navbar.toggle_state()

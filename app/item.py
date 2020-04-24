@@ -10,14 +10,14 @@ class DisplayItem(BoxLayout):
         super(DisplayItem, self).__init__(**kwargs)
         self.item = item
         self.img = AsyncImage(source=self.item.img_src, size_hint=(1,1))
-        #self.img.width = 200
-        #self.img.height = 200
+        self.img.width = 200
+        self.img.height = 200
         self.name = self.item.name
         self.link = self.item.link
         self.status = self.item.status
 
         self.add_widget(self.img)
-        self.buy_btn = Button(text="Buy now", size_hint=(1,0.1))
+        self.buy_btn = Button(text="Buy", size_hint=(1,0.1))
         self.buy_btn.bind(on_press=self.buy_item)
         self.info_layout = GridLayout()
         self.info_layout.cols = 1
@@ -37,9 +37,14 @@ class DisplayItem(BoxLayout):
             self.sizes.bind(on_select=lambda instance, x: setattr(self.mainbutton, "text", x))
             self.info_layout.add_widget(self.mainbutton)
 
+        self.info_label = Label(text=str(self.status), size_hint=(1,0.1), markup=True)
+        self.info_layout.add_widget(self.info_label)
+        if self.status is None:
+            self.info_label.text = "[color=00ff00]In Stock[/color]"
+            self.info_layout.add_widget(self.buy_btn)
+        else:
+            self.info_label.text = "[color=ff0000][b][size=15]OUT OF STOCK[/size][/b][/color]"
 
-        self.info_layout.add_widget(Label(text=str(self.status), size_hint=(1,0.1)))
-        self.info_layout.add_widget(self.buy_btn)
         self.add_widget(self.info_layout)
 
     def buy_item(self, instance):
