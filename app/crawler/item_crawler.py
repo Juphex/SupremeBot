@@ -32,7 +32,6 @@ class Item_Crawler():
         if category not in self.categories.categories.keys():
             raise "category does not exist in dict"
         #get data
-        print(category)
         self.items[category] = self.get_items.get_items(self.categories.get_url_from_category(category))
         #return data
         return self.items[category]        
