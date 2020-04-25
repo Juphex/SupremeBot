@@ -22,4 +22,3 @@ class NavigationBar(NavigationDrawer):
 
         main_panel = BoxLayout(orientation='vertical')
         self.add_widget(main_panel)
-        self.anim_type = 'slide_above_anim'
