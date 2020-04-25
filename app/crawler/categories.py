@@ -14,6 +14,7 @@ class Categories:
         "skate" : "https://www.supremenewyork.com/shop/all/skate"}
     
     #was static before
-    def get_url_from_category(self, category):
+    @staticmethod
+    def get_url_from_category(category):
         #TODO exception
         return Categories.categories[category]
