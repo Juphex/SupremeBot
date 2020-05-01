@@ -31,7 +31,7 @@ class ViewScreen(Screen):
         self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))'''
 
         #app_icon in ActionPrevious
-        self.actnprv = ActionPrevious(inside_group=True, title="Supreme App             [b]New Items[/b]", with_previous=False, on_press=self.show_navbar, markup=True)
+        self.actnprv = ActionPrevious(inside_group=True, title="Supreme App             [b]New Items[/b]", with_previous=False, on_press=self.return_to_dashboard, markup=True)
         self.actnvw.add_widget(self.actnprv)
         self.settings_button = ActionButton(text="Settings")
         self.settings_button.bind(on_press=self.switch_screen_to_settings)
@@ -62,8 +62,14 @@ class ViewScreen(Screen):
         self.navbar.toggle_state()
     '''
 
+    def return_to_dashboard(self, instance):
+        #refresh items
+        #close settings if open
+        pass
+
     def switch_screen_to_settings(self, instance):
-       self.manager.current = "settings"
+       #self.manager.current = "settings"
+       pass
 
     #random func
     def selenium(self, instance):

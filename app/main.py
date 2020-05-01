@@ -2,7 +2,7 @@ import kivy
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from view_screen import ViewScreen
-from settings_screen import SettingsScreen
+from settings_view import SettingsView
 from login_screen import LoginScreen
 from kivy.app import runTouchApp
 
@@ -19,5 +19,4 @@ if __name__ == "__main__":
     sm = ScreenManager()
     sm.add_widget(LoginScreen(name="login"))
     sm.add_widget(ViewScreen(item_crawler, name='view'))
-    sm.add_widget(SettingsScreen(name='settings'))
     SupremeBot().run()
