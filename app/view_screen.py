@@ -20,7 +20,7 @@ class ViewScreen(Screen):
         #status of items
         self.actnbr = ActionBar(pos_hint = {"top" : 1})
         self.actnvw = ActionView(use_separator=True)
-        self.group = ActionGroup(text = "Supreme App1")
+        self.group = ActionGroup(text = "Supreme App")
         #self.actnvw.add_widget(self.group, 1)
 
         #navbar
@@ -38,7 +38,7 @@ class ViewScreen(Screen):
         self.items = item_crawler.getNew()
         self.items_layout = DisplayItemsLayout(self.items, size_hint_y=None)
         self.items_layout.bind(minimum_height=self.items_layout.setter('height'))
-        self.screenview = ScrollView(size_hint=(1, None))
+        self.screenview = ScrollView(size_hint=(1, 1))
         self.screenview.add_widget(self.items_layout)
 
         #NAVBAR currently disabled
@@ -47,13 +47,12 @@ class ViewScreen(Screen):
         self.inside_baselayout = FloatLayout(size=(Window.width, Window.height - 10 * Window.height))
         self.inside_baselayout.add_widget(self.sv ,-1)
         self.inside_baselayout.add_widget(self.navbar, 1)
-        self.baselayout.add_widget(self.inside_baselayout)'
-        self.baselayout = BoxLayout(orientation="horizontal")
+        self.baselayout.add_widget(self.inside_baselayout)'''
+        self.baselayout = BoxLayout(orientation="vertical")
         self.baselayout.add_widget(self.actnbr)
-        self.baselayout.add_widget(self.sv)
-        self.add_widget(self.baselayout)'''
-        self.add_widget(self.actnbr)
-        self.add_widget(self.screenview)
+        self.baselayout.add_widget(self.screenview, -1)
+        self.add_widget(self.baselayout)
+
         
     def show_navbar(self, instance):
         self.navbar.toggle_state()
