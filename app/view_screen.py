@@ -23,15 +23,19 @@ class ViewScreen(Screen):
         self.group = ActionGroup(text = "Supreme App")
         #self.actnvw.add_widget(self.group, 1)
 
+        '''
         #navbar
         self.navbar = NavigationBar()
         self.navbar.button_home.bind(on_press=self.show_navbar)
         self.navbar.button_category.bind(on_press=self.selenium)
-        self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))
+        self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))'''
 
         #app_icon in ActionPrevious
         self.actnprv = ActionPrevious(inside_group=True, title="Supreme App             [b]New Items[/b]", with_previous=False, on_press=self.show_navbar, markup=True)
         self.actnvw.add_widget(self.actnprv)
+        self.settings_button = ActionButton(text="Settings")
+        self.settings_button.bind(on_press=self.switch_screen_to_settings)
+        self.actnvw.add_widget(self.settings_button)
         self.actnbr.add_widget(self.actnvw)
 
         #Scollview
@@ -53,12 +57,13 @@ class ViewScreen(Screen):
         self.baselayout.add_widget(self.screenview, -1)
         self.add_widget(self.baselayout)
 
-        
-    def show_navbar(self, instance):
+    #NAVBAR currently disabled
+    '''def show_navbar(self, instance):
         self.navbar.toggle_state()
+    '''
 
-    def switch_screen(self, screen):
-       self.manager.current = screen
+    def switch_screen_to_settings(self, instance):
+       self.manager.current = "settings"
 
     #random func
     def selenium(self, instance):
