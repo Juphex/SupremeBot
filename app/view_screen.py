@@ -71,7 +71,7 @@ class ViewScreen(Screen):
        #self.manager.current = "settings"
        pass
 
-    #random func
+    '''#random func
     def selenium(self, instance):
         self.navbar.button_category.text = "hihihi"
-        print("hi")
+        print("hi")'''
