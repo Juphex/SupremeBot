@@ -42,16 +42,15 @@ class ViewScreen(Screen):
         self.sv.add_widget(self.items_layout)
 
         #NAVBAR currently disabled
-        self.baselayout = BoxLayout(orientation="vertical")
-        self.baselayout.add_widget(self.actnbr)
-        #self.baselayout.add_widget(self.sv)
+        '''
         self.inside_baselayout = BoxLayout(orientation="horizontal")
         self.inside_baselayout = FloatLayout(size=(Window.width, Window.height - 10 * Window.height))
-
-        #self.inside_baselayout.add_widget(self.navbar ,1)
-        self.inside_baselayout.add_widget(self.sv, -1)
-        self.baselayout.add_widget(self.inside_baselayout)
-        self.baselayout.add_widget(self.navbar, 1)
+        self.inside_baselayout.add_widget(self.sv ,-1)
+        self.inside_baselayout.add_widget(self.navbar, 1)
+        self.baselayout.add_widget(self.inside_baselayout)'''
+        self.baselayout = BoxLayout(orientation="vertical")
+        self.baselayout.add_widget(self.actnbr)
+        self.baselayout.add_widget(self.sv)
         self.add_widget(self.baselayout)
         
     def show_navbar(self, instance):
