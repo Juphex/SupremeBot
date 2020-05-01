@@ -10,6 +10,7 @@ from kivy.core.window import Window
 from navigationbar import NavigationBar
 from displaylayout import DisplayItemsLayout
 from item import DisplayItem
+from settings_view import SettingsView
 
 
 class ViewScreen(Screen):
@@ -45,6 +46,9 @@ class ViewScreen(Screen):
         self.screenview = ScrollView(size_hint=(1, 1))
         self.screenview.add_widget(self.items_layout)
 
+        #Settings
+        self.settingsview = SettingsView()
+
         #NAVBAR currently disabled
         '''
         self.inside_baselayout = BoxLayout(orientation="horizontal")
@@ -57,20 +61,29 @@ class ViewScreen(Screen):
         self.baselayout.add_widget(self.screenview, -1)
         self.add_widget(self.baselayout)
 
+
+        self.settings_is_active = False
+        self.dashboard_is_active = True
+
     #NAVBAR currently disabled
     '''def show_navbar(self, instance):
         self.navbar.toggle_state()
     '''
 
     def return_to_dashboard(self, instance):
-        #refresh items
-        #close settings if open
-        pass
+        if self.settings_is_active:
+            self.baselayout.remove_widget(self.settingsview)
+            # TODO: refresh screenview
+            self.baselayout.add_widget(self.screenview)
+            
+            self.settings_is_active = False
 
     def switch_screen_to_settings(self, instance):
-       #self.manager.current = "settings"
-       pass
+        if self.dashboard_is_active:
+            self.baselayout.remove_widget(self.screenview)
+            self.baselayout.add_widget(self.settingsview)
 
+            self.dashboard_is_active = False
     '''#random func
     def selenium(self, instance):
         self.navbar.button_category.text = "hihihi"

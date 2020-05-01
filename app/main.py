@@ -2,7 +2,6 @@ import kivy
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from view_screen import ViewScreen
-from settings_view import SettingsView
 from login_screen import LoginScreen
 from kivy.app import runTouchApp
 
