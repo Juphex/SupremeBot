@@ -77,6 +77,7 @@ class ViewScreen(Screen):
             self.baselayout.add_widget(self.screenview)
             
             self.settings_is_active = False
+            self.dashboard_is_active = True
 
     def switch_screen_to_settings(self, instance):
         if self.dashboard_is_active:
@@ -84,6 +85,7 @@ class ViewScreen(Screen):
             self.baselayout.add_widget(self.settingsview)
 
             self.dashboard_is_active = False
+            self.settings_is_active = True
     '''#random func
     def selenium(self, instance):
         self.navbar.button_category.text = "hihihi"
