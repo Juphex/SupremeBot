@@ -1,3 +1,4 @@
+from kivy.uix.settings import SettingsWithTabbedPanel, SettingsWithNoMenu, SettingsWithSidebar, SettingsWithSpinner
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.button import Button
 #from jnius import autoclass, cast
