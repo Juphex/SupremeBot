@@ -15,15 +15,20 @@ class SupremeBot(App):
     def build(self):
         self.settings_cls = SettingsWithNoMenu
         self.use_kivy_settings = False
-
         return sm
 
     def build_config(self, config):
         config.setdefaults('credentials', {
-            'boolexample': True,
-            'numericexample': 10,
-            'optionsexample': 'option2',
-            'stringexample': 'some_string'})
+            'size': "medium",
+            'name': "Firstname Lastname",
+            'email': '',
+            'tel': '00000',
+            "street" : "",
+            "street_nr":"",
+            "address_3":"",
+            "city":"",
+            "plz":"",
+            "country":"UK"})
 
     def build_settings(self, settings):
         settings.add_json_panel('Settings',
