@@ -1,3 +1,4 @@
+from kivy.app import App
 from kivy.uix.screenmanager import Screen
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionPrevious, ActionButton, ActionBar, ActionGroup, ActionView, ActionItem
@@ -31,7 +32,7 @@ class ViewScreen(Screen):
         self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))'''
 
         #app_icon in ActionPrevious
-        self.actnprv = ActionPrevious(inside_group=True, title="Supreme App             [b]New Items[/b]", with_previous=False, on_press=self.show_navbar, markup=True)
+        self.actnprv = ActionPrevious(inside_group=True, title="Supreme App             [b]New Items[/b]", with_previous=False, on_press=self.return_to_dashboard, markup=True)
         self.actnvw.add_widget(self.actnprv)
         self.settings_button = ActionButton(text="Settings")
         self.settings_button.bind(on_press=self.switch_screen_to_settings)
@@ -45,6 +46,7 @@ class ViewScreen(Screen):
         self.screenview = ScrollView(size_hint=(1, 1))
         self.screenview.add_widget(self.items_layout)
 
+
         #NAVBAR currently disabled
         '''
         self.inside_baselayout = BoxLayout(orientation="horizontal")
@@ -57,15 +59,29 @@ class ViewScreen(Screen):
         self.baselayout.add_widget(self.screenview, -1)
         self.add_widget(self.baselayout)
 
+
+        self.settings_is_active = False
+        self.dashboard_is_active = True
+
     #NAVBAR currently disabled
     '''def show_navbar(self, instance):
         self.navbar.toggle_state()
     '''
 
-    def switch_screen_to_settings(self, instance):
-       self.manager.current = "settings"
+    #may be obsolete
+    def return_to_dashboard(self, instance):
+        if self.settings_is_active:
+            self.baselayout.remove_widget(self.settingsview)
+            # TODO: refresh screenview
+            self.baselayout.add_widget(self.screenview)
+            
+            self.settings_is_active = False
+            self.dashboard_is_active = True
 
-    #random func
+    def switch_screen_to_settings(self, instance):
+        App.get_running_app().open_settings()
+
+    '''#random func
     def selenium(self, instance):
         self.navbar.button_category.text = "hihihi"
-        print("hi")
+        print("hi")'''
