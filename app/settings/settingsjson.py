@@ -1,4 +1,3 @@
-
 import json
 
 settings_json = json.dumps([
@@ -78,5 +77,11 @@ settings_json = json.dumps([
      'desc': 'Needed in credit card formula',
      'section': 'payment',
      'key': 'credit_card_exp_month',
-     "options": [1,2,3,4,5,6,7,8,9,10,11,12]},
+     "options": ["1","2","3","4","5","6","7","8","9","10","11","12"]},
+    {'type': 'options',
+     'title': 'Credit Card expiration year',
+     'desc': 'Needed in credit card formula',
+     'section': 'payment',
+     'key': 'credit_card_exp_year',
+     "options": ["2020","2021","2022", "2023", "2024", "2025", "2026", "2027", "2028", "2029", "2030"]},
 ])

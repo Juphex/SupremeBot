@@ -32,7 +32,8 @@ class SupremeBot(App):
         config.setdefaults("payment", {
             "credit_card_type" : "Visa",
             "credit_card_nr":"",
-            "credit_card_exp_month":1
+            "credit_card_exp_month":"1",
+            "credit_card_exp_year":"2020"
         })
 
     def build_settings(self, settings):

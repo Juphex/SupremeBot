@@ -68,6 +68,7 @@ class ViewScreen(Screen):
         self.navbar.toggle_state()
     '''
 
+    #may be obsolete
     def return_to_dashboard(self, instance):
         if self.settings_is_active:
             self.baselayout.remove_widget(self.settingsview)
