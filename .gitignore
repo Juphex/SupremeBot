@@ -1,4 +1,5 @@
 .vscode/
+.idea/
 
 app/__pycache__/
 app/crawler/__pycache__/
