@@ -1,3 +1,4 @@
+from kivy.app import App
 from kivy.uix.screenmanager import Screen
 from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionPrevious, ActionButton, ActionBar, ActionGroup, ActionView, ActionItem
@@ -10,7 +11,6 @@ from kivy.core.window import Window
 from navigationbar import NavigationBar
 from displaylayout import DisplayItemsLayout
 from item import DisplayItem
-from settings_view import SettingsView
 
 
 class ViewScreen(Screen):
@@ -46,8 +46,6 @@ class ViewScreen(Screen):
         self.screenview = ScrollView(size_hint=(1, 1))
         self.screenview.add_widget(self.items_layout)
 
-        #Settings
-        self.settingsview = SettingsView()
 
         #NAVBAR currently disabled
         '''
@@ -80,12 +78,8 @@ class ViewScreen(Screen):
             self.dashboard_is_active = True
 
     def switch_screen_to_settings(self, instance):
-        if self.dashboard_is_active:
-            self.baselayout.remove_widget(self.screenview)
-            self.baselayout.add_widget(self.settingsview)
+        App.get_running_app().open_settings()
 
-            self.dashboard_is_active = False
-            self.settings_is_active = True
     '''#random func
     def selenium(self, instance):
         self.navbar.button_category.text = "hihihi"
