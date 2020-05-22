@@ -29,6 +29,11 @@ class SupremeBot(App):
             "city":"",
             "plz":"",
             "country":"UK"})
+        config.setdefaults("payment", {
+            "credit_card_type" : "Visa",
+            "credit_card_nr":"",
+            "credit_card_exp_month":1
+        })
 
     def build_settings(self, settings):
         settings.add_json_panel('Settings',

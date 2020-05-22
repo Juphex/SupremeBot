@@ -3,7 +3,7 @@ import json
 
 settings_json = json.dumps([
     {'type': 'title',
-     'title': ' Credentials'},
+     'title': 'Credentials'},
     {'type': 'options',
      'title': 'Size',
      'desc': 'Size that is to be bought if available',
@@ -59,7 +59,24 @@ settings_json = json.dumps([
      "DENMARK", "ESTONIA", "FINLAND", "FRANCE", "GERMANY", "GREECE", "HUNGARY", "ICELAND", "IRELAND",
      "ITALY", "LATVIA", "LITHUANIA", "LUXEMBOURG", "MONACO", "NETHERLANDS", "NORWAY", "POLAND", "PORTUGAL", 
      "ROMANIA", "RUSSIA", "SLOVAKIA", "SLOVENIA", "SPAIN", "SWEDEN", "SWITZERLAND", "TURKEY"]
-     }
+     },
+    {'type': 'title',
+     'title': 'Payment Settings'},
+    {'type': 'options',
+     'title': 'Credit Card type',
+     'desc': 'The bank your credit card is from',
+     'section': 'payment',
+     'key': 'credit_card_type',
+     'options': ["Visa", "American Express", "Mastercard", "Solo"]},
+     {'type': 'string',
+     'title': 'Credit Card numbers',
+     'desc': 'Needed in credit card formula',
+     'section': 'payment',
+     'key': 'credit_card_nr'},
+    {'type': 'options',
+     'title': 'Credit Card expiration month',
+     'desc': 'Needed in credit card formula',
+     'section': 'payment',
+     'key': 'credit_card_exp_month',
+     "options": [1,2,3,4,5,6,7,8,9,10,11,12]},
 ])
-
-  
