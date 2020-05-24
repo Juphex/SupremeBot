@@ -3,3 +3,11 @@ requests
 scrapy
 android
 pyjnius
+twisted
+requests
+w3lib
+attrs
+lxml
+parsel
+cssselect
+openssl
