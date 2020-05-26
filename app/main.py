@@ -1,6 +1,4 @@
-import kivy
 from kivy.app import App
-from kivy.app import runTouchApp
 from kivy.uix.screenmanager import ScreenManager
 from view_screen import ViewScreen
 from login_screen import LoginScreen
@@ -37,7 +35,7 @@ class SupremeBot(App):
         })
 
     def build_settings(self, settings):
-        settings.add_json_panel('Settings',
+        settings.add_json_panel('Settings (Press ESC to close)',
                                 self.config,
                                 data=settings_json)
 

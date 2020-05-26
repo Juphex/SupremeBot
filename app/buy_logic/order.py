@@ -1,5 +1,5 @@
-from jnius import autoclass, cast
-from android.runnable import run_on_ui_thread
+#from jnius import autoclass, cast
+#from android.runnable import run_on_ui_thread
 
 # activity = autoclass("org.kivy.android.PythonActivity").mActivity
 # context = cast("android.content.Context", activity.getApplicationContext())
