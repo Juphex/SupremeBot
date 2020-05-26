@@ -12,3 +12,5 @@ app/supremebot.ini
 crawler/__pycache__/
 
 testapp.py
+
+venv/
