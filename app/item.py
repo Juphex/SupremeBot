@@ -49,5 +49,6 @@ class DisplayItem(BoxLayout):
 
     def buy_item(self, instance):
         #return Order.buy(self.link)
-        #Order.buy...
+        #HERE:
+        #Order.buy... 
         print("Buy Logic to implement")

@@ -46,14 +46,6 @@ class ViewScreen(Screen):
         self.screenview = ScrollView(size_hint=(1, 1))
         self.screenview.add_widget(self.items_layout)
 
-
-        #NAVBAR currently disabled
-        '''
-        self.inside_baselayout = BoxLayout(orientation="horizontal")
-        self.inside_baselayout = FloatLayout(size=(Window.width, Window.height - 10 * Window.height))
-        self.inside_baselayout.add_widget(self.sv ,-1)
-        self.inside_baselayout.add_widget(self.navbar, 1)
-        self.baselayout.add_widget(self.inside_baselayout)'''
         self.baselayout = BoxLayout(orientation="vertical")
         self.baselayout.add_widget(self.actnbr)
         self.baselayout.add_widget(self.screenview, -1)
@@ -62,11 +54,6 @@ class ViewScreen(Screen):
 
         self.settings_is_active = False
         self.dashboard_is_active = True
-
-    #NAVBAR currently disabled
-    '''def show_navbar(self, instance):
-        self.navbar.toggle_state()
-    '''
 
     #may be obsolete
     def return_to_dashboard(self, instance):
@@ -80,8 +67,3 @@ class ViewScreen(Screen):
 
     def switch_screen_to_settings(self, instance):
         App.get_running_app().open_settings()
-
-    '''#random func
-    def selenium(self, instance):
-        self.navbar.button_category.text = "hihihi"
-        print("hi")'''
