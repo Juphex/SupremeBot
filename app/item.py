@@ -1,12 +1,14 @@
+from kivy.app import App
 from kivy.uix.button import Button
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
 from kivy.uix.dropdown import DropDown
 from kivy.uix.image import AsyncImage
 from kivy.uix.label import Label
+from buy_logic.order import Order
 
 class DisplayItem(BoxLayout):
-    def __init__(self, item, **kwargs):
+    def __init__(self, item, driver, **kwargs):
         super(DisplayItem, self).__init__(**kwargs)
         self.item = item
         self.img = AsyncImage(source=self.item.img_src, size_hint=(1,1))
@@ -15,6 +17,8 @@ class DisplayItem(BoxLayout):
         self.name = self.item.name
         self.link = self.item.link
         self.status = self.item.status
+
+        self.driver=driver
 
         self.add_widget(self.img)
         self.buy_btn = Button(text="Buy", size_hint=(1,0.1))
@@ -47,8 +51,18 @@ class DisplayItem(BoxLayout):
 
         self.add_widget(self.info_layout)
 
-    def buy_item(self, instance):
-        #return Order.buy(self.link)
-        #HERE:
-        #Order.buy... 
-        print("Buy Logic to implement")
+    def buy_item(self, instance, size="Medium"):#
+        size = App.get_running_app().get_size()
+        import threading
+        thread = threading.Thread(target=Order.buy, args=(self, size, self.driver))
+        thread.daemon = True
+        thread.start()
+
+    def set_driver(self, driver):
+        self.driver = driver
+
+    def set_status_sold_out(self, boolean):
+        if boolean:
+            self.info_label.text = "[color=ff0000][b][size=15]OUT OF STOCK[/size][/b][/color]"
+        else:
+            self.info_label.text = "[color=00ff00]In Stock[/color]"

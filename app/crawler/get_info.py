@@ -10,7 +10,6 @@ class Get_Info(Crawler):
         url = item.link
         request = self.rq.get(url)
         response = self.TextResponse(url, body=request.content)
-        #TODO check of sold out
         name = response.css("div > h1[itemprop='name']::text").get()
         model = response.css("div > p[itemprop='model']::text").get()
         price = response.css("div > p[itemprop='price']::text").get()
@@ -32,7 +31,6 @@ class Get_Info(Crawler):
         return items
     
     def get_specificItem(self, item):
-        #check of sold out
         name, model, price, sizes = self.__get_info(item)
         item.name = name
         item.model = model
@@ -40,11 +38,13 @@ class Get_Info(Crawler):
         item.sizes = sizes
         return item
 
-    #TESTMETHOD
-    def get_url(self,url):
+    def get_sold_out_status(self, item):
+        sold_out_status = False
+        url = item.link
         request = self.rq.get(url)
         response = self.TextResponse(url, body=request.content)
-        print(response.css("div > h1[itemprop='name']::text").get())
-        print(response.css("div > p[itemprop='model']::text").get())
-        print(response.css("p > span[itemprop='price']::text").get())
-        print(response.css("select[id='size'] > option").get())
+        sold_out_btn_content = response.css("#add-remove-buttons > b").get()
+        if sold_out_btn_content == "<b class=\"button sold-out\">sold out</b>":
+            sold_out_status = True
+
+        return sold_out_status

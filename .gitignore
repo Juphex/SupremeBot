@@ -4,6 +4,7 @@
 app/__pycache__/
 app/crawler/__pycache__/
 app/settings/__pycache__/
+app/buy_logic/__pycache__/
 app/libs/garden/navigationdrawer/__pycache__/
 app/bin
 app/build

@@ -34,7 +34,10 @@ class Item_Crawler():
         #get data
         self.items[category] = self.get_items.get_items(self.categories.get_url_from_category(category))
         #return data
-        return self.items[category]        
+        return self.items[category]
+
+    def getSoldOutStatus(self, item):
+        return self.get_info.get_sold_out_status(item)
 
     def getNew(self):
         return self.getItems("new")
