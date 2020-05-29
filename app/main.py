@@ -19,6 +19,7 @@ class SupremeBot(App):
     def build_config(self, config):
         config.setdefaults('credentials', {
             'size': "Medium",
+            'shorts_size' : '32',
             'name': "Firstname Lastname",
             'email': '',
             'tel': '00000',
@@ -40,6 +41,12 @@ class SupremeBot(App):
         config = ConfigParser()
         config.read('supremebot.ini')
         size = config.get("credentials", "size")
+        return str(size)
+
+    def get_shorts_size(self):
+        config = ConfigParser()
+        config.read('supremebot.ini')
+        size = config.get("credentials", "shorts_size")
         return str(size)
 
     def get_adress_details(self):

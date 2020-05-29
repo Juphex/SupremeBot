@@ -25,7 +25,7 @@ class Order:
 
     #multithread?
     @staticmethod
-    def buy(item, size, driver):
+    def buy(item, size, shorts_size, driver):
         success = False
 
         url = item.link
@@ -39,11 +39,20 @@ class Order:
         wait = WebDriverWait(driver, 10)
         select = Select(driver.find_element_by_css_selector("select#size"))
 
+        #try short and shirt sizes
         try:
             select.select_by_visible_text(size)
+            success = True
         except NoSuchElementException:
-            print("size not found")
-            return success
+            print("shirt size not found")#
+
+            try:
+                print("trying shorts size")
+                select.select_by_visible_text(shorts_size)
+            except NoSuchElementException:
+                print("short size not found")
+                return success
+
         driver.find_element_by_css_selector("input.button[value='hinzufügen']").click()
         from time import sleep
         sleep(1)

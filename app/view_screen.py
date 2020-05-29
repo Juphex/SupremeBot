@@ -58,17 +58,16 @@ class ViewScreen(Screen):
         self.settings_is_active = False
         self.dashboard_is_active = True
 
-    #TODO also used for refreshing items
     def return_to_dashboard(self, instance):
         self.driver.close()
         self.driver = webdriver.Chrome(executable_path=self.CHROMEDRIVER_PATH,
                                   chrome_options=self.chrome_options)
         self.items_layout.updateDriver(self.driver)
+        #refreshes ScreenView by Status
         self.items_layout.refreshStatus(self.item_crawler)
 
         if self.settings_is_active:
             self.baselayout.remove_widget(self.settingsview)
-            # TODO: refresh screenview
             self.baselayout.add_widget(self.screenview)
 
             self.settings_is_active = False
