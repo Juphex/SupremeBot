@@ -1,13 +1,16 @@
 .vscode/
 .idea/
 
+__pycache__/
+
 app/__pycache__/
 app/crawler/__pycache__/
 app/settings/__pycache__/
 app/buy_logic/__pycache__/
 app/libs/garden/navigationdrawer/__pycache__/
-app/bin
-app/build
+app/bin/
+app/build/
+app/dist/
 app/supremebot.ini
 
 crawler/__pycache__/
