@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['C:\\Users\\Chris\\Documents\\SupremeBot\\app'],
+             pathex=['.'],
              binaries=[],
              datas=[],
              hiddenimports=[],
@@ -28,7 +28,7 @@ exe = EXE(pyz,
           strip=False,
           upx=True,
           console=True )
-coll = COLLECT(exe, Tree('C:\\Users\\Chris\\Documents\\SupremeBot\\app\\'),
+coll = COLLECT(exe, Tree('.'),
                a.binaries,
                a.zipfiles,
                a.datas,
