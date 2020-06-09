@@ -4,7 +4,7 @@
 
 Using Python 3(.6)
 
-This basically automates the process of purchasing. I.e. selecting the item and filling out the formula...
+This basically automates the process of purchasing. I. e. selecting the item and filling out the formula...
 Due to the captcha the user has to do the last step on its own. Selenium will open a new chrome window, so one can fill 
 out the given captcha.
 
