@@ -8,7 +8,7 @@ out the given captcha.
 
 ![Example](https://i.imgur.com/ENN0YzM.png)
 
-##Features
+## Features
 + Refresh items and browser by clicking on kivy icon (top left)
 + Set your own credentials in the settings (like specific sizes, address, etc.)
 
