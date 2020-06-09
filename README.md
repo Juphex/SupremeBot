@@ -1,5 +1,7 @@
 # SupremeBot
 
+[![Build Status](https://travis-ci.com/Juphex/SupremeBot.svg?branch=master)](https://travis-ci.com/Juphex/SupremeBot)
+
 Using Python 3(.6)
 
 This basically automates the process of purchasing. I.e. selecting the item and filling out the formula...
