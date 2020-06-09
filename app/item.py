@@ -52,9 +52,10 @@ class DisplayItem(BoxLayout):
         self.add_widget(self.info_layout)
 
     def buy_item(self, instance, size="Medium"):#
-        size = App.get_running_app().get_size()
+        tee_size = App.get_running_app().get_size()
+        shorts_size = App.get_running_app().get_shorts_size()
         import threading
-        thread = threading.Thread(target=Order.buy, args=(self, size, self.driver))
+        thread = threading.Thread(target=Order.buy, args=(self, [tee_size, shorts_size], self.driver))
         thread.daemon = True
         thread.start()
 
