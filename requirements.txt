@@ -1,13 +1,3 @@
-kivy
-requests
-scrapy
-android
-pyjnius
-twisted
-requests
-w3lib
-attrs
-lxml
-parsel
-cssselect
-openssl
+kivy~=1.11.1
+requests~=2.23.0
+scrapy~=2.1.0

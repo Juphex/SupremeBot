@@ -1,21 +1,18 @@
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
-from kivy.uix.button import Button
 from kivy.uix.actionbar import ActionPrevious, ActionButton, ActionBar, ActionGroup, ActionView, ActionItem
-from kivy.uix.gridlayout import GridLayout
 from kivy.uix.boxlayout import BoxLayout
-from kivy.uix.floatlayout import FloatLayout
-
 from kivy.uix.scrollview import ScrollView
-from kivy.core.window import Window
-from navigationbar import NavigationBar
-from displaylayout import DisplayItemsLayout
-from item import DisplayItem
 
+from selenium import webdriver
+#from navigationbar import NavigationBar
+from displaylayout import DisplayItemsLayout
 
 class ViewScreen(Screen):
     def __init__(self, item_crawler, **kwargs):
         super(ViewScreen, self).__init__(**kwargs)
+        self.item_crawler = item_crawler
+
         #action bar
         #add refresh button?
         #status of items
@@ -24,12 +21,6 @@ class ViewScreen(Screen):
         self.group = ActionGroup(text = "Supreme App")
         #self.actnvw.add_widget(self.group, 1)
 
-        '''
-        #navbar
-        self.navbar = NavigationBar()
-        self.navbar.button_home.bind(on_press=self.show_navbar)
-        self.navbar.button_category.bind(on_press=self.selenium)
-        self.navbar.button_settings.bind(on_press=lambda x:self.switch_screen("settings"))'''
 
         #app_icon in ActionPrevious
         self.actnprv = ActionPrevious(inside_group=True, title="Supreme App             [b]New Items[/b]", with_previous=False, on_press=self.return_to_dashboard, markup=True)
@@ -40,20 +31,24 @@ class ViewScreen(Screen):
         self.actnbr.add_widget(self.actnvw)
 
         #Scollview
-        self.items = item_crawler.getNew()
-        self.items_layout = DisplayItemsLayout(self.items, size_hint_y=None)
+        #Chrome Webdriver
+        self.CHROMEDRIVER_PATH = 'chromedriver/chromedriver.exe'
+        self.chrome_options = webdriver.ChromeOptions()
+        self.chrome_options.add_argument("disable-infobars")
+        self.chrome_options.add_argument("--disable-extensions")
+        self.chrome_options.add_argument('--disable-gpu')
+        self.chrome_options.add_argument('--log-level=3')
+        #self.chrome_options.add_argument("--headless")
+
+        self.driver = webdriver.Chrome(executable_path=self.CHROMEDRIVER_PATH,
+                                  chrome_options=self.chrome_options)
+
+        self.items = self.item_crawler.getNew()
+        self.items_layout = DisplayItemsLayout(self.items, self.driver, size_hint_y=None)
         self.items_layout.bind(minimum_height=self.items_layout.setter('height'))
         self.screenview = ScrollView(size_hint=(1, 1))
         self.screenview.add_widget(self.items_layout)
 
-
-        #NAVBAR currently disabled
-        '''
-        self.inside_baselayout = BoxLayout(orientation="horizontal")
-        self.inside_baselayout = FloatLayout(size=(Window.width, Window.height - 10 * Window.height))
-        self.inside_baselayout.add_widget(self.sv ,-1)
-        self.inside_baselayout.add_widget(self.navbar, 1)
-        self.baselayout.add_widget(self.inside_baselayout)'''
         self.baselayout = BoxLayout(orientation="vertical")
         self.baselayout.add_widget(self.actnbr)
         self.baselayout.add_widget(self.screenview, -1)
@@ -63,25 +58,20 @@ class ViewScreen(Screen):
         self.settings_is_active = False
         self.dashboard_is_active = True
 
-    #NAVBAR currently disabled
-    '''def show_navbar(self, instance):
-        self.navbar.toggle_state()
-    '''
-
-    #may be obsolete
     def return_to_dashboard(self, instance):
+        self.driver.close()
+        self.driver = webdriver.Chrome(executable_path=self.CHROMEDRIVER_PATH,
+                                  chrome_options=self.chrome_options)
+        self.items_layout.updateDriver(self.driver)
+        #refreshes ScreenView by Status
+        self.items_layout.refreshStatus(self.item_crawler)
+
         if self.settings_is_active:
             self.baselayout.remove_widget(self.settingsview)
-            # TODO: refresh screenview
             self.baselayout.add_widget(self.screenview)
-            
+
             self.settings_is_active = False
             self.dashboard_is_active = True
 
     def switch_screen_to_settings(self, instance):
         App.get_running_app().open_settings()
-
-    '''#random func
-    def selenium(self, instance):
-        self.navbar.button_category.text = "hihihi"
-        print("hi")'''

@@ -11,3 +11,7 @@ using buildozer to build
 android debugging via adb logcat
 
 ```adb logcat```
+
+compiling/packaging to exe on windows
+
+``` python -m PyInstaller --name supremeapp ...\SupremeBot\app\main.py ```
