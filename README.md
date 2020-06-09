@@ -30,4 +30,5 @@ After some changes one can build an apk with the following steps:
 compiling/packaging to exe on windows
 
 ``` python -m PyInstaller --name supremeapp ...\SupremeBot\app\main.py ```
+
 or via the .spec file
