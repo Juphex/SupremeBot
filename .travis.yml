@@ -9,7 +9,7 @@ install:
 script:
   - bash -c echo "Tests would go here"
 before_deploy:
-  - pyinstaller "app/supremeapp.spec"
+  - python -m PyInstaller "app/supremeapp.spec"
 deploy:
   provider: releases
   api_key: $RELEASE_TOKEN
