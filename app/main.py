@@ -89,6 +89,6 @@ if __name__ == "__main__":
     item_crawler = Item_Crawler()
 
     sm = ScreenManager()
-    sm.add_widget(LoginScreen(name="login"))
+    # sm.add_widget(LoginScreen(name="login"))
     sm.add_widget(ViewScreen(item_crawler, name='view'))
     SupremeBot().run()
