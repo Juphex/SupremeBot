@@ -7,6 +7,7 @@ Due to the captcha the user has to do the last step on its own. Selenium will op
 out the given captcha.
 
 ![Example](https://i.imgur.com/ENN0YzM.png)
+![Settings](https://i.imgur.com/rpEFf7X.png)
 
 ## Features
 + Refresh items and browser by clicking on kivy icon (top left)
