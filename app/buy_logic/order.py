@@ -33,32 +33,27 @@ class Order:
     #     webview.loadUrl(item.link)
 
     #multithread?
+    '''Buys an item using the selenium webdriver.
+        Given a specific item, size and the chromedriver'''
     @staticmethod
     def buy(item, sizes, driver):
         success = False
-        size = sizes[0]
+        tee_size = sizes[0]
         shorts_size = sizes[1]
         url = item.link
         driver.get(url)
 
+        #some buttons may have not been occured
         wait = WebDriverWait(driver, 10)
-        select = Select(driver.find_element_by_css_selector("select#size"))
 
-        #try short and shirt sizes
         try:
-            select.select_by_visible_text(size)
+            select = Select(driver.find_element_by_css_selector("select#size"))
+            success = Order.select_size(select, tee_size=tee_size, shorts_size=shorts_size)
+
         except NoSuchElementException:
-            print("shirt size not found")
-            print(size)
-
-
-            try:
-                print("trying shorts size")
-                print(shorts_size)
-                select.select_by_visible_text(shorts_size)
-            except NoSuchElementException:
-                print("short size not found")
-                return success
+            # case item has no sizes
+            # move on with following code
+            pass
 
         driver.find_element_by_css_selector("input.button[value='hinzufügen']").click()
         sleep(1)
@@ -118,3 +113,23 @@ class Order:
         success = True
 
         return success
+
+    ''' Takes an Select object from selenium and selects the given size'''
+    @staticmethod
+    def select_size(select, tee_size, shorts_size):
+        #try short and shirt sizes
+        try:
+            select.select_by_visible_text(tee_size)
+        except NoSuchElementException:
+            print("shirt size not found")
+            print(tee_size)
+
+            try:
+                print("trying shorts size")
+                print(shorts_size)
+                select.select_by_visible_text(shorts_size)
+            except NoSuchElementException:
+                print("short size not found")
+                return False
+
+        return True
