@@ -14,7 +14,7 @@ deploy:
   provider: releases
   api_key: $RELEASE_TOKEN
   file_glob: true
-  file: app/dist/SupremeApp/*.exe
+  file: app/dist/SupremeApp/supremeapp.exe
   skip_cleanup: true
   draft: true
   on:
